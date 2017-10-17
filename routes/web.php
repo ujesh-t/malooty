@@ -19,9 +19,17 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::get('/discover', 'ProfileController@all');
-Auth::routes();
-Route::get('/{username}', 'ProfileController@single_user');
 
+Route::get('/user/{username}', 'ProfileController@single_user');
+
+Route::get('/photos/{image}', function($image = null)
+{
+    $path = storage_path() .'\\app\\photos\\'. $image;
+    Log::info($path);
+    if (file_exists($path)) { 
+        return Response::download($path);
+    }
+});
 
 
 Route::get('/photo/{photo_id}', 'HomeController@single');
@@ -35,3 +43,20 @@ Route::post('/upload', 'PhotoController@store');
 Route::post('/like/{id}', 'LikesController@like')->name('like');
 
 Route::post('/comment/{photo_id}', 'CommentController@store')->name('add_comment');
+
+
+//Auth::routes();
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');

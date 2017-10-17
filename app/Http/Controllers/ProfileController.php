@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\User;
 use App\Photo;
 
+
 class ProfileController extends Controller
 {
 	public function all(Request $request) 
@@ -24,7 +25,7 @@ class ProfileController extends Controller
 	public function single_user($username, Request $request) 
 	{
 		$user = User::where('username', $username)->first();
-		// dd($user);
+		//dd($user);
 		$photos = Photo::where('user_id', $user->id)->get();
 
 		$user_follows = $request->user()->following;

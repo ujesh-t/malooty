@@ -11,24 +11,24 @@
     <title>Laravel</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
-    <!-- Will refactor while working on frontend -->
-    <style>
-
-        @import 'https://fonts.googleapis.com/css?family=Satisfy';
-        .navbar-brand {
-            font-family: 'Satisfy', cursive;
-            font-size: 30px;
-        }
-
-    </style>
+    <link href="/css/app.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/2d14e89502.js"></script>
 
     <!-- Scripts -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <style>
+        .cup {
+            color:#800808;
+        }
+        .cup:hover {
+            color:#000000;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -44,8 +44,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    LaraGram
+                <a class="navbar-brand" href="{{ url('/') }}" style="font-family: 'Ubuntu', sans-serif; font-size:30px;">
+                    Coffee Time <i class="cup fa fa-coffee" aria-hidden="true"></i>
                 </a>
             </div>
 
@@ -69,9 +69,6 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ route('upload') }}">Upload</a>
-                                </li>
-                                <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -81,7 +78,7 @@
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
-                                </li>       
+                                </li>
                             </ul>
                         </li>
                     @endif
@@ -93,8 +90,8 @@
     @yield('content')
 
     <!-- Scripts -->
-    <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
 </body>
 </html>

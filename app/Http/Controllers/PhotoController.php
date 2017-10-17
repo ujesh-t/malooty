@@ -27,13 +27,10 @@ class PhotoController extends Controller
 
 	public function store(Request $request)
 	{
-		// echo "Worked";
-		// var_dump($request->all());
-		// die();
+
 		$url = $request->file('photo')->store('photos');
 		$user = $request->user();
-		// var_dump($user->id);
-
+	
 		Photo::create([
 			'user_id' => $user->id,
 			'description' => $request->description,

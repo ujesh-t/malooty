@@ -35,8 +35,8 @@
             </div>
         </div>
         <div class="main">
-            <h1>Laragram</h1>
-            <p>Share the best moments with best people.. Blah Blah..</p>
+            <h1>Coffee Time</h1>
+            <p>Share the best moments with best people.. People you Love..</p>
 
             <div id="btns">
                 <a href="{{ url('/resigter') }}" class="cta">Sign Up</a>

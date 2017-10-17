@@ -103,7 +103,8 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    //'key' => env('APP_KEY'),
+    'key' => 'PipelineYuIlluminatesRoutingOkcl',
 
     'cipher' => 'AES-256-CBC',
 

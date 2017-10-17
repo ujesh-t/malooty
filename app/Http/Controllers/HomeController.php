@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Photo;
-use App\User;
-
 class HomeController extends Controller
 {
     /**
@@ -24,26 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $user = $request->user();
-
-        $following_ids = []; // hmm i dont feel this is good practice refactor later
-
-        foreach ($user->following as $following) {
-            array_push($following_ids, $following->following_id);
-        }
-
-        print_r($following_ids);
-
-        $photos = Photo::where('user_id',$following_ids)->orderBy('created_at', 'desc')->paginate(5);
-//        dd($photos);
-        return view('home', ['photos' => $photos]);
-    }
-
-
-    public function single(Photo $photo_id)
-    {
-        return view('single', ['photo' => $photo_id]);
+        return view('home');
     }
 }

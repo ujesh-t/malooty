@@ -29,7 +29,8 @@
 					<div class="row">
 						@foreach ($photos as $photo)
 						<div class="col-md-4">
-							<img src="{{  '../photos/' . $photo->url }}" class="img-responsive"/><br>
+							<img src="{{'../'.$photo->url }}" class="img-responsive"/><br>
+                            <span>{{ $photo->description }}</span>
 						</div>
 						@endforeach
 					</div>
